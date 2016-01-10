@@ -1,0 +1,76 @@
+// .logo {
+// 	text-align: center;
+// 	padding-bottom: 5px;
+// 	margin: 0 auto;
+
+// 	img {
+// 		width: 70%;
+// 	}
+// }
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
+
+.logowrapper {
+	height: 77px;
+}
+.logo h1 {
+	font-size: 40px;
+	margin-top: 9px;
+	text-align:center;
+	padding-left:0;
+}
+
+.info {
+	overflow:hidden;
+	margin-top: -43px;
+}
+
+#login {
+	z-index:10;
+	position:relative;
+
+	input {
+		width:265px !important;
+	}
+
+	.login_button {
+		margin-top: -57px;
+	}
+
+	.registrate_button {
+		width:347px !important;
+		margin-top:0;
+	}
+}
+.field {
+	background-image: url(../img/gameMob.png);
+	//margin-top: -65px;
+	text-align:center;
+	
+	.get_in {
+		position: absolute;
+		bottom: 20px;
+	}
+}
+
+.info {
+	overflow:hidden;
+}
+
+.games {
+	text-align:center;
+}
+
+/* ********************************************* */
+/* ************    TEAM GROUPS    ************** */
+/* ********************************************* */
+// .line_mobile {
+// 	border-bottom: 2px solid $petrol;
+// }
+
+.group {
+	h3{
+	margin-top:10px;
+}
+}

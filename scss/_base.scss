@@ -1,0 +1,403 @@
+/* ********************************************* */
+/* ***************    BASICS    **************** */
+/* ********************************************* */
+body {
+	font-family: 'Oswald', sans-serif;
+	//font-family: 'Lato', sans-serif;
+	//font-family: 'Titillium Web', sans-serif;
+	background-color: white;	
+}
+
+a {
+	color: black;
+}
+
+.btn {
+	//width: 200px;
+	// height: 50px;
+	//border-radius: 10px;
+	background-color: $yellow;
+	//background-color: #7F476B;
+	color: black;		
+}
+h1 {
+	font-size: 40px;
+}
+
+h2 {
+	color: $yellow;
+}
+
+h3 {
+	color: $petrol;
+}
+
+.flag {
+	width: 30px;
+	height: 30px;
+	margin-top:-5px;
+}
+
+.container-fluid {
+	padding:0;
+}
+/* ********************************************* */
+/* ****************    MENU     **************** */
+/* ********************************************* */
+
+.navbar  {
+	background-color: $petrol;
+	border-radius: 0px;
+	border: none;
+
+	li:hover {
+		background-color: #ddd;
+	}
+
+
+}
+.collapsed, .navbar-toggle {
+	width: 50px;
+	padding: 10px 14px;
+}
+
+.active {
+	background-color: $yellow;
+}
+
+.navbar-right {
+	li {
+		background-color: $yellow;
+	}
+}
+
+.navbar-collapse {
+	padding: 0;
+}
+
+
+
+/* ********************************************* */
+/* ***************    INDEX     **************** */
+/* ********************************************* */
+
+.logo h1 {
+	font-family: 'Candal', sans-serif;
+	font-weight:900;
+	font-size: 60px;
+	font-style: italic;
+	color: black;
+	padding-left:20px;
+	margin-top:5px;
+}
+
+.logowrapper {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+	background: #02aaad; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	height:90px;	
+
+	#login, #registrate {
+		text-align: right;
+	}
+
+	#login {
+		z-index: 10;
+		position:relative;
+		margin-top: 31px;
+		padding-right:40px;
+
+		input {
+			width: 160px;
+		}
+
+		.registrate_button {
+			width:396px;
+			height:60px;
+			z-index: 10;
+			position:relative;
+			margin-top:10px;
+			
+		}
+	}	
+}
+
+
+.field {
+	background-image: url(../img/game.png);
+	background-repeat:no-repeat;
+	background-size: cover;
+	height:600px;
+	
+	.teaser {
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+		background: #02aaad; /* Old browsers */
+		background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		
+		border-radius: 5px;
+		margin-top: 400px;
+		width: 500px;
+		padding: 10px;
+		p {
+			font-size: 20px;
+			font-style: italic;
+			color:black;
+			padding-left: 10px;
+			
+		}
+	}
+	
+}
+
+.info {
+	text-align:center;
+
+	 //background-color:$petrol;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+background: #02aaad; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+.gamesIndex {
+	text-align:center;
+}
+
+
+/* ********************************************* */
+/* **********    REGISTRATE MODAL    *********** */
+/* ********************************************* */
+#myModal{
+	padding-top:100px;
+
+	 #main-wrapper{
+
+		#registrationform{
+			padding:30px;
+		}
+
+		img {
+			width: 20px;
+			height: 20px;
+		}
+
+		.picture{
+			float: right;
+			margin-right: 20px;
+		}
+	}
+}
+/* ********************************************* */
+/* ************    TEAM GROUPS    ************** */
+/* ********************************************* */
+
+.group {
+	.games {
+		margin-top: -8px;
+	}
+	
+	h3{
+		margin-top:30px;
+		margin-left:20px;
+		padding-bottom:10px;
+	}
+	.time {
+		margin-top: 15px;
+	}
+}
+
+.line {
+	border-bottom: 2px solid $petrol;
+	margin-top:20px;
+}
+
+th, td {
+	padding: 5px;
+}
+
+/* ********************************************* */
+/* ***************    RESULTS   **************** */
+/* ********************************************* */
+
+.table1 tr:nth-child(odd) {
+   background-color: #EDEDEC;
+}
+
+/* ********************************************* */
+/* **************   ADMIN DASH   *************** */
+/* ********************************************* */
+
+.table1 tr input {
+	width: 50px;
+}
+
+/* ********************************************* */
+/* **************    USER DASH    ************** */
+/* ********************************************* */
+
+.wrapper {
+	background-image: url(../img/game.png);
+	background-repeat:no-repeat;
+	background-size: cover;
+	overflow:hidden;
+	//width:100%;
+	height: 400px;
+
+
+	h1 {
+		color: $yellow;
+	}
+}
+
+* {
+  margin: 0;
+  padding: 0; 
+ // @include box-sizing(border-box);
+}
+
+.tabs {
+  //width: 650px;  
+  float: none;
+  list-style: none;
+  position: relative;
+  margin: 0 0 0 10px;
+  text-align: left;
+
+  li {
+    float: left;
+    display: block;
+    width: 33%;
+  }
+
+  input[type="radio"] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  label {
+    display: block;
+    padding: 14px 21px;
+    cursor: pointer;
+    &:hover {
+     // background: $dpetrol;
+    }
+  }
+  	.tab1, #tab-content1 {
+  		background-color:$petrol;
+  	}
+
+  	.tab2, #tab-content2 {
+  		background-color: $yellow;
+  	}
+
+  	p {
+  		padding: 30px;
+  		background-color: white;
+  	}
+
+  .tab-content{
+    z-index: 2;
+    display: none; 
+     overflow: hidden;
+     width: 100%;
+     padding: 25px;  
+     position: absolute;
+     top: 52px;
+    left: 0; 
+
+  }
+  //The Magic
+  [id^="tab"]:checked + label { 
+    top: 0;
+    padding-top: 17px; 
+    //background: $petrol; 
+  }
+  [id^="tab"]:checked ~ [id^="tab-content"] {
+    display: block;
+  }
+}
+p.link {
+  clear: both;
+  margin: 380px 0 0 15px;
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 5px;
+    //background-color: $petrol;
+    //@include transition(all 0.2s ease-in);
+    &:hover {
+      background-color: $petrol;
+    }
+  }
+} 
+
+/* ********************************************* */
+/* *********    TOURNAMNET SINGLE    *********** */
+/* ********************************************* */
+
+.group_scoreboard {
+	background-color:#fff;
+}
+
+/* ********************************************* */
+/* **************    BETTING    **************** */
+/* ********************************************* */
+
+.team_bet {
+	padding: 0 20px;
+}
+
+#check {
+	position: fixed;
+	bottom: 5px;
+	z-index:10;
+}
+
+/* ********************************************* */
+/* ******************    BET   ***************** */
+/* ********************************************* */
+
+// select {
+// 	width:300px;
+// 	position:absolute;
+// }
+
+/* ********************************************* */
+/* ************    CREAT GROUP    ************** */
+/* ********************************************* */
+#tournament_reg{
+	h2{
+		text-align: center;
+		
+
+	}
+	#creat_group_form{
+		max-width: 500px;
+		min-width: 300px;
+		margin-left: auto;
+		margin-right: auto;
+		.picture{
+			#groupname{
+
+			}
+		}
+		#create_btn{
+			float: center;
+		}
+
+	}
+}
+
