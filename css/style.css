@@ -510,18 +510,18 @@ h3 {
 /* ********************************************* */
 /* ************    TEAM GROUPS    ************** */
 /* ********************************************* */
-.group .games {
-  margin-top: -8px; }
-.group h3 {
-  margin-top: 30px;
-  margin-left: 20px;
-  padding-bottom: 10px; }
-.group .time {
-  margin-top: 15px; }
+.group {
+  padding: 20px 0 20px 20px; }
+  .group .tabell {
+    padding-bottom: 30px; }
+  .group h3 {
+    margin-left: 20px;
+    padding-bottom: 10px; }
+  .group .time {
+    margin-top: 15px; }
 
 .line {
-  border-bottom: 2px solid #00987f;
-  margin-top: 20px; }
+  border-bottom: 2px solid #00987f; }
 
 th, td {
   padding: 5px; }

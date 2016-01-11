@@ -12,15 +12,15 @@ for($x = 0; $x < $grouplength; $x++) {
 	?>
 	<div class="group col-sm-12">
 		<h3>Group <?php echo $groups[$x]; ?></h3>
-		<div class="tabell col-sm-4">
+		<div class="tabell col-sm-3">
     		<?php echo groupTeams($groups[$x]); ?>
     	</div>
 
 
-	    <div class="games col-sm-8">
+	    <div class="games col-sm-9">
 			<?php echo games($groups[$x]); ?>	
 	    </div>
-	</div>
+	</div><!-- group -->
 	<div class="line col-xs-12"></div>
 
     <?php
@@ -30,6 +30,17 @@ for($x = 0; $x < $grouplength; $x++) {
 </div><!-- #row -->
 
 <?php
+
+//funktionen hämtar slutresultatet i matchen
+function results($game_id) {
+	global $db_connect;
+	$query = "SELECT * FROM results WHERE game_id = $game_id";
+
+	$result = mysqli_query($db_connect, $query);
+	$row = mysqli_fetch_assoc($result);
+
+	return $row["result_goal_home"] . " - " . $row["result_goal_away"];
+}	
 
 //funktion som hämtar ut matcherna
 function games($groupGames){
@@ -61,12 +72,13 @@ function games($groupGames){
 			<table>
 				<tbody>
 					<tr>
-						<td style="width:20%"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
-						<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
-						<td style="width:10%"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
-						<td style="width:10%; text-align:center;"> VS </td>
-						<td style="width:10%"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
-						<td style="width:25%"><?php echo $away_name;?></td>
+						<td style="width:100px"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
+						<td style="width:100px; text-align:right;"><?php echo $home_name;?></td>
+						<td style="width:30px; text-align:right;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td style="width:40px; text-align:center;"> VS </td>
+						<td style="width:30px"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
+						<td style="width:100px"><?php echo $away_name;?></td>
+						<td style="width:120px"><?php echo results($game_id) ?> </td>
 					</tr>
 				</tbody>
 			</table>
