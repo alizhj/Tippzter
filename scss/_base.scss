@@ -41,6 +41,7 @@ h3 {
 .container-fluid {
 	padding:0;
 }
+
 /* ********************************************* */
 /* ****************    MENU     **************** */
 /* ********************************************* */
@@ -196,46 +197,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', end
 		}
 	}
 }
-/* ********************************************* */
-/* ************    TEAM GROUPS    ************** */
-/* ********************************************* */
-
-.group {
-	padding: 20px 0 20px 20px;
-	.tabell {
-		padding-bottom: 30px; 
-	}
-	.games {
-		//margin-top: -8px;
-	}
-	
-	h3{
-		//padding-top:30px;
-		margin-left:20px;
-		padding-bottom:10px;
-	}
-	.time {
-		margin-top: 15px;
-	}
-}
-
-.line {
-	border-bottom: 2px solid $petrol;
-	//padding-top:40px;
-	//padding-bottom:40px;
-}
-
-th, td {
-	padding: 5px;
-}
-
-/* ********************************************* */
-/* ***************    RESULTS   **************** */
-/* ********************************************* */
-
-.table1 tr:nth-child(odd) {
-   background-color: #EDEDEC;
-}
 
 /* ********************************************* */
 /* **************   ADMIN DASH   *************** */
@@ -350,6 +311,39 @@ p.link {
 } 
 
 /* ********************************************* */
+/* ************    TEAM GROUPS    ************** */
+/* ********************************************* */
+
+.group {
+	padding: 20px 0 20px 20px;
+	.tabell {
+		padding-bottom: 30px; 
+	}
+	.games {
+		//margin-top: -8px;
+	}
+	
+	h3{
+		//padding-top:30px;
+		margin-left:20px;
+		padding-bottom:10px;
+	}
+	.time {
+		margin-top: 15px;
+	}
+}
+
+.line {
+	border-bottom: 2px solid $petrol;
+	//padding-top:40px;
+	//padding-bottom:40px;
+}
+
+th, td {
+	padding: 5px;
+}
+
+/* ********************************************* */
 /* *********    TOURNAMNET SINGLE    *********** */
 /* ********************************************* */
 
@@ -372,13 +366,12 @@ p.link {
 }
 
 /* ********************************************* */
-/* ******************    BET   ***************** */
+/* ***************    RESULTS   **************** */
 /* ********************************************* */
 
-// select {
-// 	width:300px;
-// 	position:absolute;
-// }
+.table1 tr:nth-child(odd) {
+   background-color: #EDEDEC;
+}
 
 /* ********************************************* */
 /* ************    CREAT GROUP    ************** */
@@ -405,4 +398,26 @@ p.link {
 
 	}
 }
+
+/* ********************************************* */
+/* *************    SLUTSPELET    ************** */
+/* ********************************************* */
+
+.slutspel {
+	padding-left: 20px;
+}
+
+/* ********************************************* */
+/* *************    SPELREGLER    ************** */
+/* ********************************************* */
+
+.regler_wrapper {
+	padding-left: 20px;
+
+	ul {
+		list-style-type: none;
+	}
+}
+
+
 

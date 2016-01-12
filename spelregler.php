@@ -5,7 +5,7 @@
 	<div class="row regler_wrapper">
 		<h1>Såhär går det till</h1>
 		<p>Denna sidan går ut på att man skapar grupper där man kan tippa på fotbolls-EM med sina vänner, kollegor eller familj.</p>
-		<p>Du måste ha registrerat ditt bet senast 10 minuter innan matchstart.</p>
+		<p>Du måste ha registrerat ditt bet senast 10 minuter innan matchstart, sedan låses matchen.</p>
 
 		<div class="points">
 			<h3>Poäng</h3>
