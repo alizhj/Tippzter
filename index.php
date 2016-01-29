@@ -32,7 +32,7 @@
 		<div class="field col-md-12">
 			<div class="col-md-1"></div>
 			<div class="teaser col-md-6 col-xs-12">
-				<p>Fotbolls EM är snart här. </br> 
+				<p><span>Fotbolls EM är snart här! </span></br> 
 					Missa inte chansen att göra det lite extra spännande </br>
 					Bjud in och tippa med dina polare eller familj.
 				</p>
@@ -42,7 +42,7 @@
 
 		<!-- INFORMATION -->
 		<div class="info col-md-12">
-			<h1>How it all works!</h1>
+			<h1>Såhär funkar det!</h1>
 			<p>Tippa med dina vänner, bjud in och gå loss på betten. Bla bla bla...</p>
 		</div>
 
@@ -133,7 +133,8 @@ function gamesTomorrow(){
 					WHERE T1.team_id=game_match.home_team_id AND T2.team_id=game_match.away_team_id ";
 
 	$result = mysqli_query($db_connect, $query);
-	
+	$datetime = date('Ymd')+1;
+
 	while($row = mysqli_fetch_assoc($result)){
 
 		$game_id = $row["game_id"];
@@ -145,7 +146,7 @@ function gamesTomorrow(){
 		$game_start = $row['game_start'];
 
 		
-		$datetime = date('Ymd')+1;
+		
 		
 		//kollar om det är någon match idag och skriver ut det
 		if($datetime == date('Ymd', strtotime($game_start))){
@@ -158,6 +159,9 @@ function gamesTomorrow(){
 			<img src="img/<?php echo $home_flag; ?> ">  VS  
 			<img src="img/<?php echo $away_flag; ?>"><?php echo $away_name; ?></h4
 			></br><?php
+		}
+		else if($game_start < 0) {
+			echo "Ingen match imorgon tyvärr";
 		}								
 	}
 }

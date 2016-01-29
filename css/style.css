@@ -438,7 +438,6 @@ h3 {
   .logowrapper #login {
     z-index: 10;
     position: relative;
-    margin-top: 31px;
     padding-right: 40px; }
     .logowrapper #login input {
       width: 160px; }
@@ -473,11 +472,16 @@ h3 {
     .field .teaser p {
       font-size: 20px;
       font-style: italic;
-      color: black;
+      font-weight: 300;
+      color: white;
       padding-left: 10px; }
+      .field .teaser p span {
+        font-weight: 300;
+        font-size: 25px; }
 
 .info {
   text-align: center;
+  color: black;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
   background: #02aaad;
   /* Old browsers */
@@ -589,6 +593,8 @@ p.link {
   padding: 20px 0 20px 20px; }
   .group .tabell {
     padding-bottom: 30px; }
+  .group .games {
+    padding-left: 100px; }
   .group h3 {
     margin-left: 20px;
     padding-bottom: 10px; }
@@ -652,6 +658,9 @@ th, td {
     list-style-type: none; }
 
 @media screen and (min-width: 200px) and (max-width: 767px) {
+  .mobile_hide {
+    display: none; }
+
   /* ********************************************* */
   /* ***************    INDEX     **************** */
   /* ********************************************* */
@@ -671,20 +680,23 @@ th, td {
   #login {
     z-index: 10;
     position: relative; }
+    #login form {
+      margin-top: 20px; }
     #login input {
-      width: 265px !important; }
+      width: 265px !important;
+      margin-left: 10%; }
     #login .login_button {
       margin-top: -57px; }
     #login .registrate_button {
-      width: 347px !important;
+      width: 90% !important;
       margin-top: 0; }
 
   .field {
     background-image: url(../img/gameMob.png);
+    margin-top: -30px;
     text-align: center; }
-    .field .get_in {
-      position: absolute;
-      bottom: 20px; }
+    .field .teaser {
+      width: 100%; }
 
   .info {
     overflow: hidden; }
@@ -695,9 +707,14 @@ th, td {
   /* ********************************************* */
   /* ************    TEAM GROUPS    ************** */
   /* ********************************************* */
+  .group .games {
+    padding-left: 0; }
   .group h3 {
     margin-top: 10px; } }
 @media screen and (min-width: 768px) and (max-width: 991px) {
+  .mobile_hide {
+    display: none; }
+
   /* ********************************************* */
   /* ***************    INDEX     **************** */
   /* ********************************************* */
@@ -706,10 +723,13 @@ th, td {
     margin-top: 9px; }
 
   #login {
-    margin-top: -31px; }
+    margin-top: -55px; }
 
   .field {
-    margin-top: -63px; }
+    margin-top: -39px; }
+    .field .teaser {
+      width: 100%;
+      text-align: center; }
 
   .info {
     overflow: hidden;
@@ -721,9 +741,8 @@ th, td {
   .today h1, .tomorrow h1 {
     font-size: 30px; } }
 @media screen and (min-width: 992px) {
-  .get_in {
-    right: 10px;
-    bottom: 20px; }
+  #login {
+    margin-top: 31px; }
 
   .registrate button {
     height: 110px; } }

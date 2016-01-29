@@ -12,12 +12,12 @@ for($x = 0; $x < $grouplength; $x++) {
 	?>
 	<div class="group col-sm-12">
 		<h3>Group <?php echo $groups[$x]; ?></h3>
-		<div class="tabell col-sm-3">
+		<div class="tabell col-sm-4 col-md-3">
     		<?php echo groupTeams($groups[$x]); ?>
     	</div>
 
 
-	    <div class="games col-sm-9">
+	    <div class="games col-sm-8 col-md-9">
 			<?php echo games($groups[$x]); ?>	
 	    </div>
 	</div><!-- group -->
@@ -73,11 +73,11 @@ function games($groupGames){
 				<tbody>
 					<tr>
 						<td style="width:100px"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
-						<td style="width:100px; text-align:right;"><?php echo $home_name;?></td>
+						<td class="mobile_hide" style="width:100px; text-align:right;"><?php echo $home_name;?></td>
 						<td style="width:30px; text-align:right;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
 						<td style="width:40px; text-align:center;"> VS </td>
 						<td style="width:30px"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
-						<td style="width:100px"><?php echo $away_name;?></td>
+						<td class="mobile_hide" style="width:100px"><?php echo $away_name;?></td>
 						<td style="width:120px"><?php echo results($game_id) ?> </td>
 					</tr>
 				</tbody>
@@ -100,7 +100,7 @@ function groupTeams($teamGroup){
 		<thead>
 			<tr>
 				<td></td>
-				<td></td>
+				<td style="width:100px;"></td>
 				<td>h</td>
 				<td>b</td>
 				<td>+/-</td>

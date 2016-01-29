@@ -1,12 +1,7 @@
-// .logo {
-// 	text-align: center;
-// 	padding-bottom: 5px;
-// 	margin: 0 auto;
+.mobile_hide {
+	display:none;
+}
 
-// 	img {
-// 		width: 70%;
-// 	}
-// }
 /* ********************************************* */
 /* ***************    INDEX     **************** */
 /* ********************************************* */
@@ -29,9 +24,13 @@
 #login {
 	z-index:10;
 	position:relative;
+	form {
+		margin-top:20px;
+	}
 
 	input {
 		width:265px !important;
+		margin-left: 10%;
 	}
 
 	.login_button {
@@ -39,18 +38,22 @@
 	}
 
 	.registrate_button {
-		width:347px !important;
+		width:90% !important;
 		margin-top:0;
 	}
 }
 .field {
 	background-image: url(../img/gameMob.png);
-	//margin-top: -65px;
+	margin-top: -30px;
 	text-align:center;
 	
-	.get_in {
-		position: absolute;
-		bottom: 20px;
+	// .get_in {
+	// 	position: absolute;
+	// 	bottom: 20px;
+	// }
+
+	.teaser {
+		width: 100%;
 	}
 }
 
@@ -70,6 +73,9 @@
 // }
 
 .group {
+	.games {
+		padding-left: 0;
+	}
 	h3{
 	margin-top:10px;
 }
