@@ -40,15 +40,11 @@ $result1 = $db_connect->query($query1);
 	<div class="row">
 		<div class="team_bet">
 			
+		<?php
+		//lägg till _id efter home_team och away_team ^_^!
+		/* REGISTRERING AV RESULTAT */
 
-
-<?php
-
-
-//lägg till _id efter home_team och away_team ^_^!
-/* REGISTRERING AV RESULTAT */
-
-$query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM 
+		$query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM 
 			(SELECT T1.team_name AS team_home, T2.team_name AS team_away, T1.team_flag 
 			AS home_flag, T2.team_flag AS away_flag, game_match.* 
 			FROM game_match, teams T1, teams T2 
@@ -126,6 +122,90 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 				<?php } ?>
 			</tbody>
 		</table><?php 
+		} // end while 
+
+		/* REGISTRERING AV SLUTSPELRESULTAT */
+
+		$query1 = "SELECT allGames.*, slutspel_bets.goal_home, slutspel_bets.goal_away FROM 
+			(SELECT T1.team_name AS team_home, T2.team_name AS team_away, T1.team_flag 
+			AS home_flag, T2.team_flag AS away_flag, slutspel.* 
+			FROM slutspel, teams T1, teams T2 
+			WHERE T1.team_id=slutspel.home_team_id AND T2.team_id=slutspel.away_team_id) AS allGames 
+
+			LEFT OUTER JOIN 
+			(SELECT * FROM slutspel_bets 
+			WHERE user_id = $user_id AND tournament_id = $tournament_id ) AS slutspel_bets 
+			ON allGames.slutspel_id = slutspel_bets.slutspel_id
+			ORDER BY allGames.slutspel_id";
+
+
+		  // die($query1);
+
+		$result1 = $db_connect->query($query1);
+
+		while($row = mysqli_fetch_assoc($result1)) {
+
+			$slutspel_id = $row["slutspel_id"];
+			$home_name = $row["team_home"];
+			$away_name = $row["team_away"];
+			$home_flag = $row["home_flag"];
+			$away_flag = $row["away_flag"];
+			$goal_home = $row["goal_home"];
+			$goal_away = $row["goal_away"];
+			$game_start = $row["game_date"];
+
+			//date check variabels
+			$date = date('Y-m-d H:i:s');
+			$currentDate = strtotime($date);
+			$futureDate = $currentDate+(60*10);
+			$formatDate = date(" Y-m-d H:i:s", $futureDate);
+
+			$start_time = strtotime($game_start);
+			$lock_time = strtotime($formatDate);
+
+			?>
+			
+			<!-- <div class="bet_boxes"> -->
+			<h4>Slutspelsmatcher</h4>
+			<table class="table1 col-sm-12">
+				<tbody>
+
+				<?php 
+				if($start_time >= $lock_time){ 
+					?>
+					<!-- YOU CAN BET -->
+					<tr>
+						<td style="text-align:right; width:100px;"><?php echo date("d M H:i", strtotime($game_start));?></td>
+						<td class="mobile_hide" style="text-align:right;"><?php echo $home_name;?>
+						<td  style="text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td  style="text-align:center;"> VS 
+						<td ><img class="flag" src="img/<?php echo $away_flag; ?>" />
+						<td  class="mobile_hide" style="text-align:left;";><?php echo $away_name;?></td>
+						<td ><input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $slutspel_id; ?>" value="<?php echo $goal_home; ?>" /></td>
+						<td>-</td>
+						<td ><input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $slutspel_id; ?>" value="<?php echo $goal_away; ?>"/></td><br/>
+						<td><input class="slutspel_id" type="hidden" name="game_id[]" value="<?php echo $slutspel_id; ?>" /></td>
+						<td class="error">Du måste fylla i båda fälten</td>
+					</tr>
+					<?php 
+				}
+				else{ ?>
+					<tr>
+						<td style="padding-left: 38px;" class="locked"><?php echo date("d M H:i", strtotime($game_start));?></td>
+						<td style="text-align:right;" class="locked mobile_hide"><?php echo $home_name;?>
+						<td  style="text-align:center;" class="locked"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td  style="text-align:center;" class="locked"> VS 
+						<td  style="text-align:left;"class="locked"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+						<td style="text-align:left;" class="locked mobile_hide"><?php echo $away_name;?></td>
+						<td class="locked"><?php echo $goal_home; ?> - <?php echo $goal_away; ?></td><br/>
+						<td class="locked">Matchen är låst</td>
+						<td></td>
+						
+						
+					</tr>
+				<?php } ?>
+			</tbody>
+		</table><?php 
 		} // end while ?>
 		<button id="check" class="col-sm-12 btn btn-default" name="save_bets" value="Spara Bets">spara bets</button>
 		</div><!-- team_bet -->
@@ -147,6 +227,7 @@ $(document).ready(function(){
 		post_values = [];
 		$('tr').each(function() {
 
+			//var slutspel_id = $(this).children('td').children('input.slutspel_id');
 			var game_id = $(this).children('td').children('input.game_id');
 			var goal_home = $(this).children('td').children('input.goal_home');
 			var goal_away = $(this).children('td').children('input.goal_away');

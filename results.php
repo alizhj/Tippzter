@@ -8,17 +8,17 @@
 		
 
 			<?php
-						$query = "SELECT allGames.*, results.result_goal_home, results.result_goal_away FROM
-							  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
-							  			T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
-							  FROM game_match, teams T1, teams T2
-							  WHERE T1.team_id=game_match.home_team_id AND
-							  		T2.team_id=game_match.away_team_id) as allGames
-							  
-							  LEFT OUTER JOIN 
-							  (SELECT * FROM results) as results
-							  ON allGames.game_id = results.game_id
-							  ORDER BY allGames.game_id";
+			$query = "SELECT allGames.*, results.result_goal_home, results.result_goal_away FROM
+				  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
+				  			T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
+				  FROM game_match, teams T1, teams T2
+				  WHERE T1.team_id=game_match.home_team_id AND
+				  		T2.team_id=game_match.away_team_id) as allGames
+				  
+				  LEFT OUTER JOIN 
+				  (SELECT * FROM results) as results
+				  ON allGames.game_id = results.game_id
+				  ORDER BY allGames.game_id";
 
 			$result = mysqli_query($db_connect, $query);
 				

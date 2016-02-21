@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Värd: localhost
--- Tid vid skapande: 13 jan 2016 kl 14:00
+-- Tid vid skapande: 21 feb 2016 kl 20:17
 -- Serverversion: 5.6.21
 -- PHP-version: 5.6.3
 
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `results` (
 --
 
 INSERT INTO `results` (`result_id`, `game_id`, `result_goal_home`, `result_goal_away`) VALUES
-(45, 1, 5, 1),
+(45, 1, 5, 5),
 (46, 2, 5, 3),
 (47, 3, 2, 2),
 (48, 15, 5, 0),
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `slutspel` (
 --
 
 INSERT INTO `slutspel` (`slutspel_id`, `home_team_id`, `away_team_id`, `game_date`) VALUES
-(1, 0, 0, '2016-06-25 15:00:00'),
+(1, 23, 34, '2016-06-25 15:00:00'),
 (2, 0, 0, '2016-06-25 18:00:00'),
 (3, 0, 0, '2016-06-25 21:00:00'),
 (4, 0, 0, '2016-06-26 15:00:00'),
@@ -224,6 +224,41 @@ INSERT INTO `slutspel` (`slutspel_id`, `home_team_id`, `away_team_id`, `game_dat
 (6, 0, 0, '2016-06-26 21:00:00'),
 (7, 0, 0, '2016-06-27 18:00:00'),
 (8, 0, 0, '2016-06-27 21:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `slutspel_bets`
+--
+
+CREATE TABLE IF NOT EXISTS `slutspel_bets` (
+`slutspel_bet_id` int(11) NOT NULL,
+  `slutspel_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `tournament_id` int(11) NOT NULL,
+  `goal_home` int(11) NOT NULL,
+  `goal_away` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur `slutspel_result`
+--
+
+CREATE TABLE IF NOT EXISTS `slutspel_result` (
+`slutspel_result_id` int(11) NOT NULL,
+  `slutspel_id` int(11) NOT NULL,
+  `result_goal_home` int(11) NOT NULL,
+  `result_goal_away` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumpning av Data i tabell `slutspel_result`
+--
+
+INSERT INTO `slutspel_result` (`slutspel_result_id`, `slutspel_id`, `result_goal_home`, `result_goal_away`) VALUES
+(3, 1, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -247,29 +282,29 @@ CREATE TABLE IF NOT EXISTS `teams` (
 --
 
 INSERT INTO `teams` (`team_id`, `team_name`, `group_nr`, `team_flag`, `team_points`, `plus_goals`, `minus_goals`, `goal_diff`) VALUES
-(22, 'Albany', 'A', 'ALB.png', 6, 8, 9, -1),
-(23, 'France', 'A', 'FRA.png', 6, 10, 1, 9),
-(24, 'Romania', 'A', 'ROU.png', 3, 5, 10, -5),
-(25, 'Switzerland', 'A', 'SUI.png', 0, 5, 8, -3),
+(22, 'Albanien', 'A', 'ALB.png', 6, 8, 9, -1),
+(23, 'Frankrike', 'A', 'FRA.png', 4, 10, 5, 5),
+(24, 'Rumänien', 'A', 'ROU.png', 3, 5, 10, -5),
+(25, 'Schweiz', 'A', 'SUI.png', 0, 5, 8, -3),
 (26, 'England', 'B', 'ENG.png', 4, 5, 4, 1),
-(27, 'Russia', 'B', 'RUS.png', 2, 5, 5, 0),
-(28, 'Slovakia', 'B', 'SVK.png', 2, 3, 3, 0),
+(27, 'Ryssland', 'B', 'RUS.png', 2, 5, 5, 0),
+(28, 'Slovakien', 'B', 'SVK.png', 2, 3, 3, 0),
 (29, 'Wales', 'B', 'WAL.png', 1, 2, 3, -1),
-(30, 'Germany', 'C', 'GER.png', 0, 2, 4, -2),
-(31, 'N. Ireland', 'C', 'NIR.png', 3, 5, 5, 0),
-(32, 'Poland', 'C', 'POL.png', 6, 4, 2, 2),
-(33, 'Ukraine', 'C', 'UKR.png', 3, 5, 5, 0),
-(34, 'Croatia', 'D', 'CRO.png', 6, 9, 6, 3),
-(35, 'Czech Republic', 'D', 'CZE.png', 0, 3, 10, -7),
-(36, 'Spain', 'D', 'ESP.png', 4, 7, 2, 5),
-(37, 'Turkey', 'D', 'TUR.png', 1, 5, 6, -1),
-(38, 'Belgium', 'E', 'BEL.png', 6, 4, 2, 2),
-(39, 'Italy', 'E', 'ITA.png', 1, 3, 4, -1),
-(40, 'Ireland', 'E', 'IRL.png', 0, 3, 5, -2),
-(41, 'Sweden', 'E', 'SWE.png', 4, 5, 4, 1),
-(42, 'Austria', 'F', 'AUT.png', 1, 2, 2, 0),
-(43, 'Hungary', 'F', 'HUN.png', 1, 2, 2, 0),
-(44, 'Iceland', 'F', 'ISL.png', 0, 1, 3, -2),
+(30, 'Tyskland', 'C', 'GER.png', 0, 2, 4, -2),
+(31, 'Nordirland', 'C', 'NIR.png', 3, 5, 5, 0),
+(32, 'Polen', 'C', 'POL.png', 6, 4, 2, 2),
+(33, 'Ukraina', 'C', 'UKR.png', 3, 5, 5, 0),
+(34, 'Kroatien', 'D', 'CRO.png', 6, 9, 6, 3),
+(35, 'Tjeckoslovakien', 'D', 'CZE.png', 0, 3, 10, -7),
+(36, 'Spanien', 'D', 'ESP.png', 4, 7, 2, 5),
+(37, 'Turkiet', 'D', 'TUR.png', 1, 5, 6, -1),
+(38, 'Belgien', 'E', 'BEL.png', 6, 4, 2, 2),
+(39, 'Italien', 'E', 'ITA.png', 1, 3, 4, -1),
+(40, 'Irland', 'E', 'IRL.png', 0, 3, 5, -2),
+(41, 'Sverige', 'E', 'SWE.png', 4, 5, 4, 1),
+(42, 'Österrike', 'F', 'AUT.png', 1, 2, 2, 0),
+(43, 'Ungern', 'F', 'HUN.png', 1, 2, 2, 0),
+(44, 'Island', 'F', 'ISL.png', 0, 1, 3, -2),
 (45, 'Portugal', 'F', 'POR.png', 3, 3, 1, 2);
 
 -- --------------------------------------------------------
@@ -345,10 +380,10 @@ INSERT INTO `user_tournaments` (`user_tournaments_id`, `user_id`, `user_name`, `
 (3, 1, 'lisaadmin', 4, 0),
 (4, 1, 'lisaadmin', 5, 0),
 (5, 5, 'lisafisa', 6, 30),
-(6, 5, 'lisafisa', 7, 110),
+(6, 5, 'lisafisa', 7, 95),
 (7, 7, 'erik', 8, 0),
 (8, 5, 'lisafisa', 9, 0),
-(9, 7, 'erik', 7, 45);
+(9, 7, 'erik', 7, 60);
 
 --
 -- Index för dumpade tabeller
@@ -395,6 +430,18 @@ ALTER TABLE `results_extra`
 --
 ALTER TABLE `slutspel`
  ADD PRIMARY KEY (`slutspel_id`);
+
+--
+-- Index för tabell `slutspel_bets`
+--
+ALTER TABLE `slutspel_bets`
+ ADD PRIMARY KEY (`slutspel_bet_id`);
+
+--
+-- Index för tabell `slutspel_result`
+--
+ALTER TABLE `slutspel_result`
+ ADD PRIMARY KEY (`slutspel_result_id`);
 
 --
 -- Index för tabell `teams`
@@ -459,6 +506,16 @@ MODIFY `results_extra_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 ALTER TABLE `slutspel`
 MODIFY `slutspel_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT för tabell `slutspel_bets`
+--
+ALTER TABLE `slutspel_bets`
+MODIFY `slutspel_bet_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT för tabell `slutspel_result`
+--
+ALTER TABLE `slutspel_result`
+MODIFY `slutspel_result_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT för tabell `teams`
 --

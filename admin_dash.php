@@ -77,60 +77,114 @@ if($_SESSION['admin_loggedin'] != 'true') {
 		<div class="result_reg col-sm-12">
 			<h1>Registrate results</h1>
 			
-					<?php
-					$query = "SELECT allGames.*, results.result_goal_home, results.result_goal_away FROM
-							  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
-							  			T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
-							  FROM game_match, teams T1, teams T2
-							  WHERE T1.team_id=game_match.home_team_id AND
-							  		T2.team_id=game_match.away_team_id) as allGames
-							  
-							  LEFT OUTER JOIN 
-							  (SELECT * FROM results) as results
-							  ON allGames.game_id = results.game_id
-							  ORDER BY allGames.game_id";
+			<?php
+			$query = "SELECT allGames.*, results.result_goal_home, results.result_goal_away FROM
+					  (SELECT T1.team_name as team_home, T2.team_name as team_away, 
+					  			T1.team_flag as home_flag, T2.team_flag as away_flag, game_match.* 
+					  FROM game_match, teams T1, teams T2
+					  WHERE T1.team_id=game_match.home_team_id AND
+					  		T2.team_id=game_match.away_team_id) as allGames
+					  
+					  LEFT OUTER JOIN 
+					  (SELECT * FROM results) as results
+					  ON allGames.game_id = results.game_id
+					  ORDER BY allGames.game_id";
 
-					$result = $db_connect->query($query);
+			$result = $db_connect->query($query);
 
-					while($row = mysqli_fetch_assoc($result)) {
+			while($row = mysqli_fetch_assoc($result)) {
 
-						$game_id = $row["game_id"];
-						$home_name = $row["team_home"];
-						$away_name = $row["team_away"];
-						$home_flag = $row["home_flag"];
-						$away_flag = $row["away_flag"];
-						$goal_home = $row["result_goal_home"];
-						$goal_away = $row["result_goal_away"];
-						$home_team_id = $row["home_team_id"];
-						$away_team_id = $row["away_team_id"];
-						
-						?>
-						<form method="post" action="includes/save_result.php">
-				<table class="table1 col-sm-12">
-					<tbody>
-						<tr>
-							<td style="width:25%; text-align:right;"><?php echo $home_name;?>
-								<input type="hidden" name="home_team_id" value="<?php echo $home_team_id; ?>"></td>
-							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
-							<td style="width:10%; text-align:center;"> VS 
-								<input type="hidden" name="game_id" value="<?php echo $game_id; ?>"></td>
-							<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
-								<input type="hidden" name="away_team_id" value="<?php echo $away_team_id; ?>"/></td>
-							<td style="width:25%"><?php echo $away_name;?></td>
-							<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
-							<td>-</td>
-							<td><input type="number" name="away_goal" value="<?php echo $goal_away; ?>"/></td>
-							<td><input type='submit' style="float:right;" id="<?php echo $game_id ?>" name="save_result" value="Spara"/></td>
-						</tr>
-					</tbody>
-				</table>
+				$game_id = $row["game_id"];
+				$home_name = $row["team_home"];
+				$away_name = $row["team_away"];
+				$home_flag = $row["home_flag"];
+				$away_flag = $row["away_flag"];
+				$goal_home = $row["result_goal_home"];
+				$goal_away = $row["result_goal_away"];
+				$home_team_id = $row["home_team_id"];
+				$away_team_id = $row["away_team_id"];
 				
-			</form>
-						<?php
-					}
-					?>
-					
+				?>
+				<form method="post" action="includes/save_result.php">
+					<table class="table1 col-sm-12">
+						<tbody>
+							<tr>
+								<td style="width:25%; text-align:right;"><?php echo $home_name;?>
+									<input type="hidden" name="home_team_id" value="<?php echo $home_team_id; ?>"></td>
+								<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+								<td style="width:10%; text-align:center;"> VS 
+									<input type="hidden" name="game_id" value="<?php echo $game_id; ?>"></td>
+								<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+									<input type="hidden" name="away_team_id" value="<?php echo $away_team_id; ?>"/></td>
+								<td style="width:25%"><?php echo $away_name;?></td>
+								<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
+								<td>-</td>
+								<td><input type="number" name="away_goal" value="<?php echo $goal_away; ?>"/></td>
+								<td><input type='submit' style="float:right;" id="<?php echo $game_id ?>" name="save_result" value="Spara"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<?php
+			}
+			?>
+		</div><!-- result_reg -->
+
+		<!-- REGISTERING AV SLUTSPELRESULTAT -->
+		<div class="result_reg col-sm-12">
+			<h1>Registrate playoff-results</h1>
 			
+			<?php
+			$query1 = "SELECT allGames.*, slutspel_result.result_goal_home, slutspel_result.result_goal_away 
+					FROM (SELECT T1.team_name as team_home, T2.team_name as team_away, 
+						T1.team_flag as home_flag, T2.team_flag as away_flag, slutspel.* 
+						FROM slutspel, teams T1, teams T2 
+						WHERE T1.team_id=slutspel.home_team_id AND T2.team_id=slutspel.away_team_id) 
+						as allGames 
+
+						LEFT OUTER JOIN 
+						(SELECT * FROM slutspel_result) as slutspel_result 
+						ON allGames.slutspel_id = slutspel_result.slutspel_id 
+						ORDER BY allGames.slutspel_id";
+
+			$result1 = $db_connect->query($query1);
+
+			while($row = mysqli_fetch_assoc($result1)) {
+
+				$slutspel_id = $row["slutspel_id"];
+				$home_name = $row["team_home"];
+				$away_name = $row["team_away"];
+				$home_flag = $row["home_flag"];
+				$away_flag = $row["away_flag"];
+				$goal_home = $row["result_goal_home"];
+				$goal_away = $row["result_goal_away"];
+				$home_team_id = $row["home_team_id"];
+				$away_team_id = $row["away_team_id"];
+				
+				?>
+				<form method="post" action="includes/save_slutspel_result.php">
+					<table class="table1 col-sm-12">
+						<tbody>
+							<tr>
+								<td style="width:25%; text-align:right;"><?php echo $home_name;?>
+									<input type="hidden" name="home_team_id" value="<?php echo $home_team_id; ?>"></td>
+								<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+								<td style="width:10%; text-align:center;"> VS 
+									<input type="hidden" name="slutspel_id" value="<?php echo $slutspel_id; ?>"></td>
+								<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+									<input type="hidden" name="away_team_id" value="<?php echo $away_team_id; ?>"/></td>
+								<td style="width:25%"><?php echo $away_name;?></td>
+								<td><input type="number" name="home_goal" value="<?php echo $goal_home; ?>" /></td>
+								<td>-</td>
+								<td><input type="number" name="away_goal" value="<?php echo $goal_away; ?>"/></td>
+								<td><input type='submit' style="float:right;" id="<?php echo $slutspel_id ?>" name="save_result" value="Spara"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+				<?php
+			}
+			?>
 		</div><!-- result_reg -->
 
 	</div><!-- #row -->
