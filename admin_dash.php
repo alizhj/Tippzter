@@ -1,8 +1,15 @@
 <?php 
  	include 'includes/header.php';
 
+/*
+* Kolla om användaren är inloggad som admin, om inte, skicka till index.php 
+*/
+if($_SESSION['admin_loggedin'] != 'true') {
+	header("Location: index.php");
+}
 ?>
 <div class="container">
+<a href="logout.php">Logga Ut</a>
 	<div class="row">
 		
 		<!-- REGISTERING AV LAG -->

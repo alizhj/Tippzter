@@ -1,8 +1,10 @@
-<?php include 'includes/header.php' ?>
+<?php include 'includes/header.php';
 
-	
+if($_SESSION['user_loggedin'] != 'true') {
+	header("Location: index.php");
+}
 
-
+?>
 <div class="container-fluid">
 	<div class="row1">
 
