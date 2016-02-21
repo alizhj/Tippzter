@@ -37,15 +37,15 @@
 				?>
 			
 				<tr>
-					<td style="width:20%"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
-					<td style="width:25%; text-align:right;"><?php echo $home_name;?></td>
-					<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
-					<td style="width:10%; text-align:center;"> VS </td>
-					<td style="width:10%; text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
-					<td style="width:25%"><?php echo $away_name;?></td>
-					<td><?php echo $goal_home; ?></td>
-					<td>-</td>
-					<td><?php echo $goal_away; ?></td>
+					<td style="width:100px;"><?php echo date("d M H:i", strtotime($game_start)); ?></td>
+					<td class="mobile_hide" style=" text-align:right;"><?php echo $home_name;?></td>
+					<td style=" text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+					<td style=" text-align:center;"> VS </td>
+					<td style=" text-align:center;"><img class="flag" src="img/<?php echo $away_flag; ?>" /></td>
+					<td class="mobile_hide"><?php echo $away_name;?></td>
+					<td style="width:20px;"><?php echo $goal_home; ?></td>
+					<td style="width:20px;">-</td>
+					<td style="width:20px;"><?php echo $goal_away; ?></td>
 				</tr>
 				<?php							
 			}

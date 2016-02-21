@@ -54,15 +54,29 @@ The other thing is that we get the scores from the users and sort them out with 
 				score highest up.  -->
 				<?php 
 				$query = "SELECT * FROM user_tournaments WHERE tournament_id = '". $row['tournament_id'] ."' ORDER BY user_points DESC ";
-				$result = $db_connect->query($query); ?>
+				$result = $db_connect->query($query); 
+				$place = 0; 
+				?>
+
 				<div class="group_scoreboard">
-					<ol>
-					<?php while($row = mysqli_fetch_assoc($result)) { ?>
-							<!-- prints out the scoreboard. -->
-							<li><?php echo $row['user_name']; ?> - <?php echo $row['user_points']; ?> poäng</li></br>
-				
+					<h3>Topplista</h3>
+					<table class="table_scoreboard">
+						<?php while($row = mysqli_fetch_assoc($result)) { 
+							$place++;
+							?>
+
+						<!-- prints out the scoreboard. -->
+						<tr>
+							<td><?php echo $place; ?></td>
+							<td><?php echo $row['user_name']; ?> </td>
+							<td><?php echo $row['user_points']; ?> poäng</td>
+						</tr>
+					
+			
 					<?php } ?>
-					</ol>
+					</table>
+			
+					
 				</div>
 	
 			<?php }

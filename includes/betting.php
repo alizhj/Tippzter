@@ -95,15 +95,15 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 					?>
 					<!-- YOU CAN BET -->
 					<tr>
-						<td class="col-md-1" style="text-align:right;"><?php echo date("d M H:i", strtotime($game_start));?></td>
-						<td class="col-md-2" style="text-align:right;"><?php echo $home_name;?>
-						<td class="col-md-1" style="text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
-						<td class="col-md-1" style="text-align:center;"> VS 
-						<td class="col-md-1" style="text-align:left;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
-						<td class="col-md-2" style="text-align:left;";><?php echo $away_name;?></td>
-						<td class="col-md-2"><input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /></td>
+						<td style="text-align:right; width:100px;"><?php echo date("d M H:i", strtotime($game_start));?></td>
+						<td class="mobile_hide" style="text-align:right;"><?php echo $home_name;?>
+						<td  style="text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td  style="text-align:center;"> VS 
+						<td ><img class="flag" src="img/<?php echo $away_flag; ?>" />
+						<td  class="mobile_hide" style="text-align:left;";><?php echo $away_name;?></td>
+						<td ><input class="goal_home" original="<?php echo $goal_home; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_home; ?>" /></td>
 						<td>-</td>
-						<td class="col-md-2"><input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/></td><br/>
+						<td ><input class="goal_away" original="<?php echo $goal_away; ?>" type="number" gameID="<?php echo $game_id; ?>" value="<?php echo $goal_away; ?>"/></td><br/>
 						<td><input class="game_id" type="hidden" name="game_id[]" value="<?php echo $game_id; ?>" /></td>
 						<td class="error">Du måste fylla i båda fälten</td>
 					</tr>
@@ -111,14 +111,16 @@ $query = "SELECT allGames.*, bets.goal_home, bets.goal_away FROM
 				}
 				else{ ?>
 					<tr>
-						<td class="col-md-1" style="text-align:right;"><?php echo date("d M H:i", strtotime($game_start));?></td>
-						<td class="col-md-2" style="text-align:right;"><?php echo $home_name;?>
-						<td class="col-md-1" style="text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
-						<td class="col-md-1" style="text-align:center;"> VS 
-						<td class="col-md-1" style="text-align:left;"><img class="flag" src="img/<?php echo $away_flag; ?>" />
-						<td class="col-md-2" style="text-align:left;"><?php echo $away_name;?></td>
-						<td class="col-md-2"><?php echo $goal_home; ?> - <?php echo $goal_away; ?></td><br/>
-						<td class="col-md-2">Matchen är låst</td>
+						<td style="padding-left: 38px;" class="locked"><?php echo date("d M H:i", strtotime($game_start));?></td>
+						<td style="text-align:right;" class="locked mobile_hide"><?php echo $home_name;?>
+						<td  style="text-align:center;" class="locked"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
+						<td  style="text-align:center;" class="locked"> VS 
+						<td  style="text-align:left;"class="locked"><img class="flag" src="img/<?php echo $away_flag; ?>" />
+						<td style="text-align:left;" class="locked mobile_hide"><?php echo $away_name;?></td>
+						<td class="locked"><?php echo $goal_home; ?> - <?php echo $goal_away; ?></td><br/>
+						<td class="locked">Matchen är låst</td>
+						<td></td>
+						
 						
 					</tr>
 				<?php } ?>

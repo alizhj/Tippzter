@@ -42,6 +42,10 @@ h3 {
 	padding:0;
 }
 
+td {
+	width: 100px;
+}
+
 
 /* ********************************************* */
 /* ****************    MENU     **************** */
@@ -168,13 +172,12 @@ h3 {
 	text-align:center;
 	color: black;
 
-	 //background-color:$petrol;
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
-background: #02aaad; /* Old browsers */
-background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
+	background: #02aaad; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
 
@@ -225,11 +228,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', end
 	background-size: cover;
 	overflow:hidden;
 	//width:100%;
-	height: 400px;
+	height: 470px;
 
 
 	h1 {
 		color: $yellow;
+		font-size:70px;
+		margin-left: 20px;
+	}
+	h2 {
+		margin-left:20px;
 	}
 }
 
@@ -240,17 +248,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', end
 }
 
 .tabs {
-  //width: 650px;  
+  //width: 650px; 
+  z-index:10px; 
   float: none;
   list-style: none;
   position: relative;
-  margin: 0 0 0 10px;
+  margin: -53px 0 0 10px;
   text-align: left;
+
 
   li {
     float: left;
     display: block;
     width: 33%;
+    border-radius:5px;
   }
 
   input[type="radio"] {
@@ -289,6 +300,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', end
      position: absolute;
      top: 52px;
     left: 0; 
+    min-height: 400px;
 
   }
   //The Magic
@@ -319,6 +331,11 @@ p.link {
   }
 } 
 
+.group_scoreboard {
+	padding:10px;
+}
+
+
 /* ********************************************* */
 /* ************    TEAM GROUPS    ************** */
 /* ********************************************* */
@@ -330,7 +347,7 @@ p.link {
 	}
 	.games {
 		padding-left: 100px;
-		//margin-top: -8px;
+
 	}
 	
 	h3{
@@ -345,8 +362,6 @@ p.link {
 
 .line {
 	border-bottom: 2px solid $petrol;
-	//padding-top:40px;
-	//padding-bottom:40px;
 }
 
 th, td {
@@ -365,6 +380,25 @@ th, td {
 /* **************    BETTING    **************** */
 /* ********************************************* */
 
+.table1 {
+	tr 
+	td{
+		width:100px;
+	}
+	td:nth-child(4){
+		width:40px;
+	}
+	td:nth-child(5){
+		text-align:center;
+	}
+
+	td:nth-child(7), td:nth-child(8), td:nth-child(9){
+		width:30px;
+	}
+	.locked {
+		width:79px;
+	}
+}
 .team_bet {
 	padding: 0 20px;
 }
@@ -383,25 +417,25 @@ th, td {
    background-color: #EDEDEC;
 }
 
+tr:nth-child(odd) {
+   background-color: #EDEDEC;
+}
+
 /* ********************************************* */
-/* ************    CREAT GROUP    ************** */
+/* ************    CREATE GROUP    ************* */
 /* ********************************************* */
 #tournament_reg{
 	h2{
-		text-align: center;
-		
+		text-align: center;	
 
 	}
+
 	#creat_group_form{
 		max-width: 500px;
 		min-width: 300px;
 		margin-left: auto;
 		margin-right: auto;
-		.picture{
-			#groupname{
 
-			}
-		}
 		#create_btn{
 			float: center;
 		}
