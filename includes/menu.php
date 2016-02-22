@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+                                                                                                                                                                                                                                                                                                <nav class="navbar navbar-default">
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -32,11 +32,13 @@
                 ?>
                 <li>Admin: <?php echo $_SESSION['user_name']; ?></li>
                 <li><a href="logout.php">Logga Ut</a></li>
+                <?php echo $_SESSION['admin_loggedin'];?>
                 <?php 
             }
             else if(isset($_SESSION['user_loggedin']) && $_SESSION['user_loggedin'] == 'true'){
                 ?>
-                <!-- <li>User: <?php //echo $_SESSION['user_name']; ?></li> --><li><a href="logout.php">Logga Ut</a></li>
+                <li>User: <?php echo $_SESSION['user_name']; ?></li>
+                <li><a href="logout.php">Logga Ut</a></li>
                 <?php 
             }?>  
         </ul>

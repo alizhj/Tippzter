@@ -8,6 +8,12 @@
 			</div>
 		
 			<div class="col-md-7 col-sm-12 col-xs-12" id="login">	
+				<?php
+				if(isset($_GET['logerror'])){ ?>
+					<label style="color:red;">Wrong Password or Email</label>
+					
+				<?php
+				}?>
 				<form class="form-inline" action='login_check.php' method='post'>
 					<input class="form-control"type='text' name='login_email' placeholder='Email'>
 					<input class="form-control" type='password' name='login_password' placeholder='Password'>

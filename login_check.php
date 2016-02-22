@@ -13,7 +13,7 @@
 		$row = mysqli_fetch_assoc($result);
 		if($row == 0){
 
-			echo 'fel uppgifter';
+			header("Location: index.php?logerror=1");
 
 		}else{
 			if($row['admin'] == 'false'){

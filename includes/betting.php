@@ -12,7 +12,7 @@ $result1 = $db_connect->query($query1);
 	<div class="row">
 		<div class="extra_bet_box">
 
-			<form action="save_extra_bet.php" class="form-inline" method="post" role="form">
+			<form action="includes/save_extra_bet.php" class="form-inline" method="post" role="form">
 				<div class="form-group">
 					<label for="player">Målkung:</label>
 					<input class="form-control" type="text" name="player" />
@@ -90,7 +90,7 @@ $result1 = $db_connect->query($query1);
 				if($start_time >= $lock_time){ 
 					?>
 					<!-- YOU CAN BET -->
-					<tr>
+					<tr id="betGames" class="betGames">
 						<td style="text-align:right; width:100px;"><?php echo date("d M H:i", strtotime($game_start));?></td>
 						<td class="mobile_hide" style="text-align:right;"><?php echo $home_name;?>
 						<td  style="text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
@@ -174,7 +174,7 @@ $result1 = $db_connect->query($query1);
 				if($start_time >= $lock_time){ 
 					?>
 					<!-- YOU CAN BET -->
-					<tr>
+					<tr id="slutBetGames" class="slutBetGames">
 						<td style="text-align:right; width:100px;"><?php echo date("d M H:i", strtotime($game_start));?></td>
 						<td class="mobile_hide" style="text-align:right;"><?php echo $home_name;?>
 						<td  style="text-align:center;"><img class="flag" src="img/<?php echo $home_flag; ?>" /></td>
@@ -221,17 +221,15 @@ $(document).ready(function(){
 	$('.error').hide();
 
 	var post_values = [];
+	var slut_post_values = [];
 
 	//loops trough all the input values again and and matches them with the old ones 'variabel inputs' to se if any have changed.
 	function check_values(){
 		post_values = [];
-		$('tr').each(function() {
-
-			//var slutspel_id = $(this).children('td').children('input.slutspel_id');
+		$('.betGames').each(function() {
 			var game_id = $(this).children('td').children('input.game_id');
 			var goal_home = $(this).children('td').children('input.goal_home');
 			var goal_away = $(this).children('td').children('input.goal_away');
-
 
 			if(goal_home.attr('original') !== goal_home.val() || goal_away.attr('original') !== goal_away.val()){
 				if (goal_home.val() == '' || goal_away.val() == '') {
@@ -246,22 +244,51 @@ $(document).ready(function(){
 	    });
 	}
 
+	function slut_check_values(){
+		slut_post_values = [];
+		$('.slutBetGames').each(function() {
+
+			//var slutspel_id = $(this).children('td').children('input.slutspel_id');
+			var slut_game_id = $(this).children('td').children('input.slutspel_id');
+			var goal_home = $(this).children('td').children('input.goal_home');
+			var goal_away = $(this).children('td').children('input.goal_away');
+
+
+			if(goal_home.attr('original') !== goal_home.val() || goal_away.attr('original') !== goal_away.val()){
+				if (goal_home.val() == '' || goal_away.val() == '') {
+					$(this).children('td.error').show();
+				}else{
+					$(this).children('td.error').hide();
+					var slut_post_value = {slut_game_id:slut_game_id.val(), goal_home:goal_home.val(), goal_away:goal_away.val()};
+					slut_post_values.push(slut_post_value);
+				}
+			}
+
+	    });
+	}
+
 	$('#check').click(function(){
 	    check_values();
+	    slut_check_values();
 	    if(post_values.length > 0) {
 		    $.ajax({
 		        type:"post",
 		        url:"includes/save_bet.php",
 		        data:"tournament_id=<?php echo $tournament_id;?>&bets="+JSON.stringify(post_values),
 		        	success:function(data){
-		        		alert("Succes, " + data);
 		        	}
 	   		});
 		}
-
+		if(slut_post_values.length > 0){
+		    $.ajax({
+		        type:"post",
+		        url:"includes/save_slut_spel.php",
+		        data:"tournament_id=<?php echo $tournament_id;?>&betts="+JSON.stringify(slut_post_values),
+		        	success:function(data){
+		        	}
+	   		});
+		}
 	});
-
-	
 });
 
 </script>
