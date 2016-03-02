@@ -72,16 +72,20 @@
 	  	</div><!-- modal-dialog -->
 	</div><!-- myModal -->
 	
-
-<div class="gamesIndex col-sm-12">
-	<div class="today col-sm-6">
-		<?php gamesToday(); ?>
+<div class="container-fluid">
+	<div class="row">
+		<div class="gamesIndex col-sm-12">
+			<div class="today col-sm-6">
+				<?php gamesToday(); ?>
+			</div>
+			<div class="tomorrow col-sm-6">
+				<?php gamesTomorrow(); ?>
+			</div>
+			
+		</div>
 	</div>
-	<div class="tomorrow col-sm-6">
-		<?php gamesTomorrow(); ?>
-	</div>
-	
 </div>
+
 
 <?php
 	
@@ -97,7 +101,7 @@ function gamesToday(){
 					WHERE T1.team_id=game_match.home_team_id AND T2.team_id=game_match.away_team_id ";
 
 	$result = mysqli_query($db_connect, $query);
-	
+	$has_game = false;
 	while($row = mysqli_fetch_assoc($result)){
 
 		$game_id = $row["game_id"];
@@ -109,10 +113,9 @@ function gamesToday(){
 		$game_start = $row['game_start'];
 
 		
-
-		
 		//kollar om det är någon match idag och skriver ut det
 		if(date('Ymd') == date('Ymd', strtotime($game_start))){
+			$has_game = true;
 			?>
 			<h3>Group <?php echo $group_nr; ?></h3>
 			<h4>
@@ -122,9 +125,16 @@ function gamesToday(){
 
 			<img src="img/<?php echo $home_flag; ?> ">  VS  
 			<img src="img/<?php echo $away_flag; ?>"><?php echo $away_name; ?></h4
-			></br><?php
-		}							
+			></br>
+			<?php
+		}
+
 	}
+	if (!$has_game){
+		echo "<p>Det är tyvärr inga matcher idag!</p>";
+	}
+
+
 }
 
 //funktion som hämtar ut morgondagens matcher
@@ -140,7 +150,7 @@ function gamesTomorrow(){
 
 	$result = mysqli_query($db_connect, $query);
 	$datetime = date('Ymd')+1;
-
+	$has_game = false;
 	while($row = mysqli_fetch_assoc($result)){
 
 		$game_id = $row["game_id"];
@@ -156,6 +166,7 @@ function gamesTomorrow(){
 		
 		//kollar om det är någon match idag och skriver ut det
 		if($datetime == date('Ymd', strtotime($game_start))){
+			$has_game = true;
 			?>
 			<h3>Group <?php echo $group_nr; ?></h3>
 			<h4>
@@ -169,6 +180,9 @@ function gamesTomorrow(){
 		else if($game_start < 0) {
 			echo "Ingen match imorgon tyvärr";
 		}								
+	}
+	if (!$has_game){
+		echo "<p>Det är tyvärr inga matcher imorgon!</p>";
 	}
 }
 

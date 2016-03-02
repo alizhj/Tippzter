@@ -151,6 +151,7 @@ td {
 		margin-top: 400px;
 		width: 500px;
 		padding: 10px;
+		overflow:hidden;
 		p {
 			font-size: 20px;
 			font-style: italic;
@@ -463,5 +464,17 @@ tr:nth-child(odd) {
 	}
 }
 
+/* ********************************************* */
+/* *************    FOOTER   ************** */
+/* ********************************************* */
+.footer {
+	background: #02aaad; /* Old browsers */
+	background: -moz-linear-gradient(-45deg,  #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(135deg,  #02aaad 0%,#3f8c93 100%,#3f5c96 100%,#8de5b5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+	height: 50px;
+}
 
 
