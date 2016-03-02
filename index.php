@@ -131,7 +131,7 @@ function gamesToday(){
 
 	}
 	if (!$has_game){
-		echo "<p>Det är tyvärr inga matcher idag!</p>";
+		echo "<p class='no_game'>Det är tyvärr inga matcher idag!</p>";
 	}
 
 
@@ -182,7 +182,7 @@ function gamesTomorrow(){
 		}								
 	}
 	if (!$has_game){
-		echo "<p>Det är tyvärr inga matcher imorgon!</p>";
+		echo "<p class='no_game'>Det är tyvärr inga matcher imorgon!</p>";
 	}
 }
 
