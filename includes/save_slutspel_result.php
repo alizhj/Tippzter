@@ -7,7 +7,7 @@ $home_team_id = $_POST['home_team_id'];
 $away_team_id = $_POST['away_team_id'];
 
 /* **************************************** */
-/* Sparar in eller uppdaterar slutresultaten på matcherna */
+/* Sparar in eller uppdaterar slutresultaten på slutspelsmatcherna */
 /* **************************************** */
 
 $result = mysqli_query($db_connect, "SELECT * FROM slutspel_result WHERE slutspel_id = $slutspel_id ");
@@ -38,11 +38,15 @@ while ( $row = mysqli_fetch_assoc($result2)) {
 	
 	//sparar returvärdet från funktionen userPoints
 	$points = userPoints($user_id, $tournament_id);
+
 	//sparar returvärdet från winnerExtraPoints
 	$extra_points = winnerExtraPoints($user_id, $tournament_id);
 
+	//sparar returvärdet från slutspelPoints
+	$slutpel_points = slutspelPoints($user_id, $tournament_id);
+
 	//hämtar funktionen som updaterar personens aktuella poäng
-	updateUserPoints($points, $extra_points, $user_id, $tournament_id);
+	updateUserPoints($points, $extra_points, $slutspel_points, $user_id, $tournament_id);
 }
 
 //skickar tillbaka till admin_dash
@@ -54,7 +58,7 @@ header("Location: ../admin_dash.php");
 /* **************************************** */
 
 
-//funktionen räknar ut poängen för varje användare
+//funktionen räknar ut poängen för varje användare i grundspelet
 function userPoints($user_id, $tournament_id) {
 	global $db_connect;
 	$points = 0;
@@ -92,7 +96,48 @@ function userPoints($user_id, $tournament_id) {
   		
     }
   	return $points;
-  	//updateUserPoints($points, $user_id, $tournament_id);
+
+}
+
+//funktionen räknar ut poängen för varje användare i slutspelet
+function slutspel_Points($user_id, $tournament_id) {
+	global $db_connect;
+	$points = 0;
+
+	//hämtar all info från slutspel och slutspel_result.
+	
+	$query = "SELECT slutspel_result.*, slutspel_bets.* FROM slutspel_result 
+		RIGHT JOIN slutspel_bets
+		ON slutspel_bets.slutspel_id = slutspel_result.slutspel_id
+		WHERE tournament_id = $tournament_id AND user_id = $user_id";
+
+  	$result = $db_connect->query($query);
+  	//print_r($result);
+    $slutspel_points = 0;
+
+  	while ($row = mysqli_fetch_assoc($result)) {
+  		
+	  		if($row["goal_home"] == $row["goal_away"] && $row["result_goal_home"] == $row["result_goal_away"]) {
+	  			$points = $points + 15;
+		  	}	
+	  		if($row["goal_home"] == $row["result_goal_home"]) {
+	  			$points = $points + 5;		
+	  		}
+	  		if($row["goal_away"] == $row["result_goal_away"]) {
+	  			$points = $points + 5;
+	  		}
+		  	
+	  		if($row["goal_away"] < $row["goal_home"] && $row["result_goal_away"] < $row["result_goal_home"]) {
+				$points = $points + 10;  			
+	  		}
+	  		else if($row["goal_away"] < $row["goal_home"] && $row["result_goal_away"] < $row["result_goal_home"]) {
+	  			$points = $points + 10;	
+	  		}
+  		
+  		
+    }
+  	return $slutspel_points;
+
 
 }
 
@@ -101,7 +146,6 @@ function winnerExtraPoints($user_id, $tournament_id) {
   $extra_points = 0;
  
   //hämtar all info från game_match och results.
-  //Vill ha alla matchers resultat för att kunna räkna ut hur många poäng varje lag har.
   $query = "SELECT extra_bets.*, results_extra.* FROM extra_bets, results_extra 
   			WHERE tournament_id = $tournament_id AND user_id = $user_id";
 
@@ -126,11 +170,11 @@ function winnerExtraPoints($user_id, $tournament_id) {
 }
 
 //funktionen uppdaterar varje persons poäng i varje grupp
-function updateUserPoints($points, $extra_points, $user_id, $tournament_id){
+function updateUserPoints($points, $extra_points, $slutspel_points, $user_id, $tournament_id){
 	global $db_connect;
 
-	//lägger ihop poängen från winnerExtraPoints och userPoints
-	$total_points = $extra_points + $points;
+	//lägger ihop poängen från winnerExtraPoints, userPoints och slutspelPoints
+	$total_points = $extra_points + $points + $slutspel_points;
 	//Uppdaterar user_points med den nya $total_points
 	mysqli_query($db_connect, "UPDATE user_tournaments SET user_points = $total_points 
 								WHERE user_id = $user_id AND tournament_id = $tournament_id");

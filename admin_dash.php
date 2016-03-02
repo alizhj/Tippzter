@@ -162,7 +162,7 @@ if($_SESSION['admin_loggedin'] != 'true') {
 				$away_team_id = $row["away_team_id"];
 				
 				?>
-				<form method="post" action="includes/save_slutspel_result.php">
+				<form method="post" action="includes/save_result.php">
 					<table class="table1 col-sm-12">
 						<tbody>
 							<tr>
