@@ -24,7 +24,6 @@ $(document).ready(function(){
 
 				//show the modal
 				$('#myModal').modal('show');
-
 			}      
 	    });
   	});

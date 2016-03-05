@@ -31,16 +31,11 @@ $(document).ready(function(){
 
 });
 
-
-	
-
-
-
-	  	$('.tab1').click(function(){
-  		$(this).addClass('active');
-  		$('.tab2').removeClass('active');
-  	});
-  	$('.tab2').click(function(){
-  		$(this).addClass('active');
-  		$('.tab1').removeClass('active');
-  	});
+$('.tab1').click(function(){
+	$(this).addClass('active');
+	$('.tab2').removeClass('active');
+});
+$('.tab2').click(function(){
+	$(this).addClass('active');
+	$('.tab1').removeClass('active');
+});

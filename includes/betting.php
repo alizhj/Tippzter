@@ -215,7 +215,7 @@ $result1 = $db_connect->query($query1);
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/bet_checker.js"></script>
+<script src="js/bet_checker.min.js"></script>
 
 
 

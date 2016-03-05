@@ -44,7 +44,7 @@
             });
         }
     });
-
+    
     //checks the given password if it holdes up to password rules.
     $('#psw').blur(function (){
         var inputVal = $(this).val();

@@ -28,4 +28,4 @@
 
 
 <?php include 'includes/footer.php' ?>
-<script src="js/create_group_check.js"></script>
+<script src="js/create_group_check.min.js"></script>

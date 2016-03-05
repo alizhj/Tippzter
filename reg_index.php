@@ -1,5 +1,5 @@
 <?php include 'includes/header.php'; ?>
-<script src="js/ajax.js"></script>
+<script src="js/ajax.min.js"></script>
 
 	<div id="main-wrapper">
 		<form id="registrationform" action="reg_user.php" method="post">

@@ -14,7 +14,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link rel="stylesheet" href="css/style.min.css" type="text/css">
 	
 
 </head>

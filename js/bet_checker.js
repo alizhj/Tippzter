@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	$('.error').hide();
-
+	
 	var post_values = [];
 	var slut_post_values = [];
 
