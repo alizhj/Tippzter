@@ -4,10 +4,20 @@
 include 'db_connect.php';
 session_start();
 
-$user_id = $_SESSION["user_id"];
-$tournament_id = $_POST['tournament'];
+if(!is_string($_SESSION["user_id"])){
+	$user_id = $_SESSION["user_id"];
+}else{
+	$user_id = mysql_real_escape_string($_SESSION["user_id"]);	
+}
+
+if(!is_string($_POST['tournament_id'])){
+	$tournament_id = $_POST['tournament_id'];
+}else{
+	$tournament_id = mysql_real_escape_string($_POST['tournament_id']);	
+}
+
 $team = $_POST['selected_team'];
-$player = $_POST['player'];
+$player = mysql_real_escape_string($_POST['player']);
 //Saves the values from the registration form into the database.
 
 //Selects all the specific data to see if there is a record with that user and tournament

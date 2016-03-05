@@ -29,8 +29,8 @@ $num_rows = mysqli_num_rows($result);
 
 if($num_rows > 1){ ?>
 
-	<h2>Välj turnering</h2>
-	<form class="form-inline col-sm-4" action="">
+<h2>Välj turnering</h2>
+<div class="form-inline col-sm-4">
 	<select class="form-control" id="tournament_select" name="selected_tournament"> 
 		<?php
 		while($row = mysqli_fetch_assoc($result)) { 
@@ -41,7 +41,7 @@ if($num_rows > 1){ ?>
 		?>
 	</select>
 	<button class="btn btn-defult" id="btn_select_tournament">Välj turnering</button>
-</form>
+</div>
 <?php }else{ 
 	$row = mysqli_fetch_assoc($result); ?>
 	<h2 id="tour_heade"><?php echo $row['tournament_name']; ?></h2>

@@ -364,6 +364,10 @@ body {
 a {
   color: black; }
 
+.row {
+  margin-right: 0;
+  margin-left: 0; }
+
 .btn {
   background-color: #E6E86C;
   color: black; }
@@ -405,8 +409,10 @@ td {
 .active {
   background-color: #E6E86C; }
 
-.navbar-right li {
-  background-color: #E6E86C; }
+.navbar-right {
+  margin-right: 0; }
+  .navbar-right li {
+    background-color: #E6E86C; }
 
 .navbar-collapse {
   padding: 0; }
@@ -531,7 +537,9 @@ td {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-  height: 470px; }
+  height: 470px;
+  padding-left: 0;
+  padding-right: 0; }
   .wrapper h1 {
     color: #E6E86C;
     font-size: 70px;
@@ -548,7 +556,7 @@ td {
   float: none;
   list-style: none;
   position: relative;
-  margin: -53px 0 0 10px;
+  margin: -53px 0 0 0;
   text-align: left; }
   .tabs li {
     float: left;
@@ -567,6 +575,8 @@ td {
     background-color: #00987f; }
   .tabs .tab2, .tabs #tab-content2 {
     background-color: #E6E86C; }
+    .tabs .tab2 .row, .tabs #tab-content2 .row {
+      margin-bottom: 20px; }
   .tabs p {
     padding: 30px;
     background-color: white; }
@@ -649,8 +659,11 @@ td {
 
 #check {
   position: fixed;
-  bottom: 5px;
-  z-index: 10; }
+  bottom: 0px;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  width: 100%; }
 
 /* ********************************************* */
 /* ***************    RESULTS   **************** */
@@ -766,7 +779,15 @@ tr:nth-child(odd) {
     margin-top: 10px; }
 
   .table1 {
-    margin: 0 auto; } }
+    margin: 0 auto; }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 52px;
+    height: 100vh;
+    width: 100%;
+    background-color: #00987f;
+    z-index: 50; } }
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .tablet_hide {
     display: none; }
@@ -802,5 +823,3 @@ tr:nth-child(odd) {
 
   .registrate button {
     height: 110px; } }
-
-/*# sourceMappingURL=style.css.map */

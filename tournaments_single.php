@@ -11,7 +11,6 @@ The other thing is that we get the scores from the users and sort them out with 
 <?php 
 	// Checks if the $_GET variabel and the user_id $_SESSION is set
 	if(isset($_GET['tour_id']) && isset($_SESSION['user_id'])){
-		
 		//Then se if there is a tournament with the same name as in the $_GET variabel.
 		$query = "SELECT * FROM tournament WHERE tournament_id = '". $_GET['tour_id'] ."'";
 
@@ -21,10 +20,10 @@ The other thing is that we get the scores from the users and sort them out with 
 		//If there isent any tournaments with the same name the query result will be NULL. Wich can meen that someone was trying
 		//to change the $_GET variabel to get in to a group that they shouldent be in.
 		if (is_null($row)) {
-			echo 'Gruppen du letade efter finns inte eller så har du inte åtkomst. ^$_GET Check^';
-		} 
 
-		else {
+			echo 'Gruppen du letade efter finns inte eller så har du inte åtkomst. ^$_GET Check^';
+
+		} else {
 			//If there is a result from the previus query, make a variabel of the tournament_id. Because the table user_tournaments
 			//dosent have the coulmn tournmanet_name, it just have a coulmn called tournament_id. And one variabel of $_SESSION['user_id']
 			$tournament_id = $row['tournament_id'];
@@ -84,14 +83,5 @@ The other thing is that we get the scores from the users and sort them out with 
 		}
 
 	}
-	else{ ?>	
 
-		<div>
-			<h1>Oh Oh! Something went a little bit wrong :/! Go back to your groups and try again.</h1>
-			<a href="tournaments.php"><h1>Klicka här för komma till dina Turneringar!</h1></a>
-		</div>	
-
-	<?php 
-	} ?>
-
-<?php include 'includes/footer.php'; ?>
+include 'includes/footer.php'; ?>

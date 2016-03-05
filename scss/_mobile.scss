@@ -87,3 +87,11 @@
 .table1 {
 	margin: 0 auto;
 }
+.navbar-collapse{
+	position: absolute;
+	top: 52px;
+	height: 100vh;
+	width: 100%;
+	background-color: $petrol;
+	z-index: 50;
+}

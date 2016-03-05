@@ -2,8 +2,17 @@
 include 'db_connect.php';
 session_start();
 //Finlir med isset knapp osv behöver kirras.
-$user_id = $_SESSION["user_id"];
-$tournament_id = $_POST['tournament_id'];
+if(!is_string($_SESSION["user_id"])){
+	$user_id = $_SESSION["user_id"];
+}else{
+	$user_id = mysql_real_escape_string($_SESSION["user_id"]);	
+}
+
+if(!is_string($_POST['tournament_id'])){
+	$tournament_id = $_POST['tournament_id'];
+}else{
+	$tournament_id = mysql_real_escape_string($_POST['tournament_id']);	
+}
 $bets = json_decode($_POST['betts']);
 
 foreach ($bets as $bet) {
