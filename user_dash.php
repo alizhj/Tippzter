@@ -63,4 +63,4 @@ if($_SESSION['user_loggedin'] != 'true') {
 
 
 <?php include 'includes/footer.php' ?>
-<script src="js/user_dash_script.js"></script>
+<script src="js/user_dash_script.min.js"></script>
