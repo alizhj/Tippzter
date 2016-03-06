@@ -364,15 +364,19 @@ body {
 a {
   color: black; }
 
+.row {
+  margin-right: 0;
+  margin-left: 0; }
+
 .btn {
-  background-color: #e9ea44;
+  background-color: #E6E86C;
   color: black; }
 
 h1 {
   font-size: 40px; }
 
 h2 {
-  color: #e9ea44; }
+  color: #E6E86C; }
 
 h3 {
   color: #00987f; }
@@ -384,6 +388,9 @@ h3 {
 
 .container-fluid {
   padding: 0; }
+
+td {
+  width: 100px; }
 
 /* ********************************************* */
 /* ****************    MENU     **************** */
@@ -400,10 +407,12 @@ h3 {
   padding: 10px 14px; }
 
 .active {
-  background-color: #e9ea44; }
+  background-color: #E6E86C; }
 
-.navbar-right li {
-  background-color: #e9ea44; }
+.navbar-right {
+  margin-right: 0; }
+  .navbar-right li {
+    background-color: #E6E86C; }
 
 .navbar-collapse {
   padding: 0; }
@@ -416,29 +425,18 @@ h3 {
   font-weight: 900;
   font-size: 60px;
   font-style: italic;
-  color: black;
+  color: pink;
   padding-left: 20px;
   margin-top: 5px; }
 
 .logowrapper {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
-  background: #02aaad;
-  /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 );
-  /* IE6-9 fallback on horizontal gradient */
   height: 90px; }
   .logowrapper #login, .logowrapper #registrate {
     text-align: right; }
   .logowrapper #login {
     z-index: 10;
     position: relative;
-    margin-top: 31px;
     padding-right: 40px; }
     .logowrapper #login input {
       width: 160px; }
@@ -469,15 +467,21 @@ h3 {
     border-radius: 5px;
     margin-top: 400px;
     width: 500px;
-    padding: 10px; }
+    padding: 10px;
+    overflow: hidden; }
     .field .teaser p {
       font-size: 20px;
       font-style: italic;
-      color: black;
+      font-weight: 300;
+      color: white;
       padding-left: 10px; }
+      .field .teaser p span {
+        font-weight: 300;
+        font-size: 25px; }
 
 .info {
   text-align: center;
+  color: black;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#02aaad+0,3f8c93+100,3f5c96+100,8de5b5+100 */
   background: #02aaad;
   /* Old browsers */
@@ -492,6 +496,8 @@ h3 {
 
 .gamesIndex {
   text-align: center; }
+  .gamesIndex .no_game {
+    font-size: 20px; }
 
 /* ********************************************* */
 /* **********    REGISTRATE MODAL    *********** */
@@ -508,31 +514,6 @@ h3 {
     margin-right: 20px; }
 
 /* ********************************************* */
-/* ************    TEAM GROUPS    ************** */
-/* ********************************************* */
-.group .games {
-  margin-top: -8px; }
-.group h3 {
-  margin-top: 30px;
-  margin-left: 20px;
-  padding-bottom: 10px; }
-.group .time {
-  margin-top: 15px; }
-
-.line {
-  border-bottom: 2px solid #00987f;
-  margin-top: 20px; }
-
-th, td {
-  padding: 5px; }
-
-/* ********************************************* */
-/* ***************    RESULTS   **************** */
-/* ********************************************* */
-.table1 tr:nth-child(odd) {
-  background-color: #EDEDEC; }
-
-/* ********************************************* */
 /* **************   ADMIN DASH   *************** */
 /* ********************************************* */
 .table1 tr input {
@@ -546,24 +527,32 @@ th, td {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-  height: 400px; }
+  height: 470px;
+  padding-left: 0;
+  padding-right: 0; }
   .wrapper h1 {
-    color: #e9ea44; }
+    color: #E6E86C;
+    font-size: 70px;
+    margin-left: 20px; }
+  .wrapper h2 {
+    margin-left: 20px; }
 
 * {
   margin: 0;
   padding: 0; }
 
 .tabs {
+  z-index: 10px;
   float: none;
   list-style: none;
   position: relative;
-  margin: 0 0 0 10px;
+  margin: -53px 0 0 0;
   text-align: left; }
   .tabs li {
     float: left;
     display: block;
-    width: 33%; }
+    width: 33%;
+    border-radius: 5px; }
   .tabs input[type="radio"] {
     position: absolute;
     top: -9999px;
@@ -575,7 +564,9 @@ th, td {
   .tabs .tab1, .tabs #tab-content1 {
     background-color: #00987f; }
   .tabs .tab2, .tabs #tab-content2 {
-    background-color: #e9ea44; }
+    background-color: #E6E86C; }
+    .tabs .tab2 .row, .tabs #tab-content2 .row {
+      margin-bottom: 20px; }
   .tabs p {
     padding: 30px;
     background-color: white; }
@@ -587,7 +578,8 @@ th, td {
     padding: 25px;
     position: absolute;
     top: 52px;
-    left: 0; }
+    left: 0;
+    min-height: 400px; }
   .tabs [id^="tab"]:checked + label {
     top: 0;
     padding-top: 17px; }
@@ -607,6 +599,30 @@ p.link {
     p.link a:hover {
       background-color: #00987f; }
 
+.group_scoreboard {
+  padding: 10px; }
+
+/* ********************************************* */
+/* ************    TEAM GROUPS    ************** */
+/* ********************************************* */
+.group {
+  padding: 20px 0 20px 20px; }
+  .group .tabell {
+    padding-bottom: 30px; }
+  .group .games {
+    padding-left: 100px; }
+  .group h3 {
+    margin-left: 20px;
+    padding-bottom: 10px; }
+  .group .time {
+    margin-top: 15px; }
+
+.line {
+  border-bottom: 2px solid #00987f; }
+
+th, td {
+  padding: 5px; }
+
 /* ********************************************* */
 /* *********    TOURNAMNET SINGLE    *********** */
 /* ********************************************* */
@@ -616,19 +632,40 @@ p.link {
 /* ********************************************* */
 /* **************    BETTING    **************** */
 /* ********************************************* */
+.table1 tr
+td {
+  width: 100px; }
+.table1 td:nth-child(4) {
+  width: 40px; }
+.table1 td:nth-child(5) {
+  text-align: center; }
+.table1 td:nth-child(7), .table1 td:nth-child(8), .table1 td:nth-child(9) {
+  width: 30px; }
+.table1 .locked {
+  width: 79px; }
+
 .team_bet {
   padding: 0 20px; }
 
 #check {
   position: fixed;
-  bottom: 5px;
-  z-index: 10; }
+  bottom: 0px;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  width: 100%; }
 
 /* ********************************************* */
-/* ******************    BET   ***************** */
+/* ***************    RESULTS   **************** */
 /* ********************************************* */
+.table1 tr:nth-child(odd) {
+  background-color: #EDEDEC; }
+
+tr:nth-child(odd) {
+  background-color: #EDEDEC; }
+
 /* ********************************************* */
-/* ************    CREAT GROUP    ************** */
+/* ************    CREATE GROUP    ************* */
 /* ********************************************* */
 #tournament_reg h2 {
   text-align: center; }
@@ -640,7 +677,40 @@ p.link {
   #tournament_reg #creat_group_form #create_btn {
     float: center; }
 
+/* ********************************************* */
+/* *************    SLUTSPELET    ************** */
+/* ********************************************* */
+.slutspel {
+  padding-left: 20px; }
+
+/* ********************************************* */
+/* *************    SPELREGLER    ************** */
+/* ********************************************* */
+.regler_wrapper {
+  padding-left: 20px; }
+  .regler_wrapper ul {
+    list-style-type: none; }
+
+/* ********************************************* */
+/* *************    FOOTER   ************** */
+/* ********************************************* */
+.footer {
+  background: #02aaad;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #02aaad 0%, #3f8c93 100%, #3f5c96 100%, #8de5b5 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02aaad', endColorstr='#8de5b5',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  height: 50px; }
+
 @media screen and (min-width: 200px) and (max-width: 767px) {
+  .mobile_hide {
+    display: none; }
+
   /* ********************************************* */
   /* ***************    INDEX     **************** */
   /* ********************************************* */
@@ -660,20 +730,23 @@ p.link {
   #login {
     z-index: 10;
     position: relative; }
+    #login form {
+      margin-top: 20px; }
     #login input {
-      width: 265px !important; }
+      width: 265px !important;
+      margin-left: 10%; }
     #login .login_button {
       margin-top: -57px; }
     #login .registrate_button {
-      width: 347px !important;
+      width: 90% !important;
       margin-top: 0; }
 
   .field {
     background-image: url(../img/gameMob.png);
+    margin-top: -30px;
     text-align: center; }
-    .field .get_in {
-      position: absolute;
-      bottom: 20px; }
+    .field .teaser {
+      width: 100%; }
 
   .info {
     overflow: hidden; }
@@ -682,11 +755,33 @@ p.link {
     text-align: center; }
 
   /* ********************************************* */
+  /* **************    USER DASH    ************** */
+  /* ********************************************* */
+  .wrapper {
+    background-image: url(../img/gameMob.png); }
+
+  /* ********************************************* */
   /* ************    TEAM GROUPS    ************** */
   /* ********************************************* */
+  .group .games {
+    padding-left: 0; }
   .group h3 {
-    margin-top: 10px; } }
+    margin-top: 10px; }
+
+  .table1 {
+    margin: 0 auto; }
+
+  .navbar-collapse {
+    position: absolute;
+    top: 52px;
+    height: 100vh;
+    width: 100%;
+    background-color: #00987f;
+    z-index: 50; } }
 @media screen and (min-width: 768px) and (max-width: 991px) {
+  .tablet_hide {
+    display: none; }
+
   /* ********************************************* */
   /* ***************    INDEX     **************** */
   /* ********************************************* */
@@ -695,10 +790,13 @@ p.link {
     margin-top: 9px; }
 
   #login {
-    margin-top: -31px; }
+    margin-top: -55px; }
 
   .field {
-    margin-top: -63px; }
+    margin-top: -39px; }
+    .field .teaser {
+      width: 100%;
+      text-align: center; }
 
   .info {
     overflow: hidden;
@@ -710,9 +808,8 @@ p.link {
   .today h1, .tomorrow h1 {
     font-size: 30px; } }
 @media screen and (min-width: 992px) {
-  .get_in {
-    right: 10px;
-    bottom: 20px; }
+  #login {
+    margin-top: 31px; }
 
   .registrate button {
     height: 110px; } }
