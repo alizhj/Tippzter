@@ -21,11 +21,7 @@ $(document).ready(function(){
 		$('#tab-content1').load( 'tournaments_single.php?tour_id='+tour_id );
 		$('#tab-content2').load( 'includes/betting.php?tour_id='+tour_id );
 
-	} else {
-
-		alert('Du är inte med i några grupper!');
-
-	}
+	} 
 	
 
 
