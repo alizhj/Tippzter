@@ -7,13 +7,13 @@ session_start();
 if(!is_string($_SESSION["user_id"])){
 	$user_id = $_SESSION["user_id"];
 }else{
-	$user_id = mysql_real_escape_string($_SESSION["user_id"]);	
+	$user_id = mysqli_real_escape_string($db_connect, $_SESSION["user_id"]);	
 }
 
 if(!is_string($_POST['tournament_id'])){
 	$tournament_id = $_POST['tournament_id'];
 }else{
-	$tournament_id = mysql_real_escape_string($_POST['tournament_id']);	
+	$tournament_id = mysqli_real_escape_string($db_connect, $_POST['tournament_id']);	
 }
 
 $team = $_POST['selected_team'];

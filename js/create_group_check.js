@@ -45,7 +45,7 @@ $("form#creat_group_form").submit(function() {
     //it will count allt the inputs that doest have the type submit. it will check if any of the does nor have the attribute correct.
     //if any doesnt have that attribute it will alret a message and return false so it dosent submit.
     if($(this).find("input[type!='submit'][correct!='correct']").length != 0) {
-        $('#big-message').text('Nu blev något riktigt tokigt :/! Testa att ladda om sidan ^_^!');
+        $('#message').text('Nu blev de tokigt! fyll i alla fält och försök igen!');
         return false;
     }
 });

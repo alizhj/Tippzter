@@ -2,10 +2,9 @@
 include 'includes/db_connect.php';
 session_start();
 
-$T_name = $_POST['tournament_name'];
-$T_text = $_POST['tournament_text']; 
+$T_name = mysqli_real_escape_string($db_connect, $_POST['tournament_name']);
+$T_text = mysqli_real_escape_string($db_connect, $_POST['tournament_text']);
 $user_id = $_SESSION['user_id'];
-$user_name = $_SESSION['user_name'];
 //$email_string = $_POST['invitation-email'];
 //$emails = explode(' ', $email_string);
 
@@ -27,9 +26,11 @@ VALUES ('". $user_id ."', '". $user_name ."','". $tournament_id ."')";
 
 if(mysqli_query($db_connect, $sql)){
 	//success
+	header("Location: user_dash.php");
 }else{
 	// echo a error message if the query dident work.
-	echo "Error: ". $sql . "<br>" . mysqli_error($db_connect);
+	//echo "Error: ". $sql . "<br>" . mysqli_error($db_connect);
+	header("Location: create_group.php?reg_error=1");
 }
 
 //$subject = 'Din vän '. $user_name . 'har bjudit in dig till Tippzter';
